@@ -1,0 +1,20 @@
+EN = {
+  "WELCOME_MESSAGE": "Welcome to PCOM Bot! 🎉\nUse the /help command to report issues. You can also change the language with /lang.",
+  "CREATE_TICKET": "📝 Create a new Jira ticket.",
+  "EDIT_TICKET": "📎 Add an attachment to a ticket.",
+  "STATUS_TICKET": "🔍 Check the status of a ticket.",
+  "CHOOSE_OPTION": "Please choose an option from the menu.",
+  "TICKET_SUMMARY": "Send the issue's title.",
+  "TICKET_KEY": "Send the ticket's key.",
+  "TICKET_DESC": "Describe the problem in more detail.",
+  "PICTURE": "📸 Please send an image related to the problem (or type 'No' if you don't want to send one).",
+  "RECEIVED_PIC": "✅ Image received successfully.",
+  "NO_PIC": "ℹ️ No image will be sent.",
+  "INVALID_PIC": "⚠️ Please send a valid image or type 'No'.",
+  "TICKET_CREATED": "🎉 Ticket successfully created.\nYou can view it at this link: ",
+  "TICKET_EDITED": "✅ Ticket successfully updated.\nYou can view it at this link: ",
+  "CREATING_TICKET": "\n⏳ Creating the ticket...",
+  "EDITING_TICKET": "\n⏳ Updating the ticket...",
+  "CANCEL_EDIT": "\n❌ Ticket editing canceled.",
+  "LANG_CHANGED": "✅ Language changed successfully."
+}
