@@ -3,18 +3,6 @@ from api import *
 from es import ES
 from en import EN
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-JIRA_API_URL = os.getenv('JIRA_API_URL')
-TOKEN = os.getenv('TOKEN')
-EMAIL = os.getenv('EMAIL')
-PROJECT_KEY = os.getenv('PROJECT_KEY')
-USER_ID = os.getenv('USER_ID')
-JIRA_BOARD = os.getenv('JIRA_BOARD')
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 
 
 user_data = {}

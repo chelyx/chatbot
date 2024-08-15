@@ -5,9 +5,20 @@ import os
 import requests
 from requests.auth import HTTPBasicAuth
 import json
-from env import *
+from dotenv import load_dotenv
+import os
 import mimetypes
 
+
+load_dotenv()
+
+JIRA_API_URL = os.getenv('JIRA_API_URL')
+TOKEN = os.getenv('TOKEN')
+EMAIL = os.getenv('EMAIL')
+PROJECT_KEY = os.getenv('PROJECT_KEY')
+USER_ID = os.getenv('USER_ID')
+JIRA_BOARD = os.getenv('JIRA_BOARD')
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 auth = HTTPBasicAuth(EMAIL, TOKEN)
 
 headers = {

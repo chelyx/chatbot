@@ -10,7 +10,6 @@ The bot supports multiple languages and can handle attachments such as images.
 - **Edit a Ticket**: Users can add attachments to existing tickets.
 - **Check Ticket Status**: Provides information on the current status of a ticket.
 - **Change Language**: Users can switch between English and Spanish using the `/lang` command.
-- **Attach Images**: Users can send images related to the issue or choose not to send any.
 
 ## Commands
 
@@ -42,4 +41,5 @@ The bot supports multiple languages and can handle attachments such as images.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)
