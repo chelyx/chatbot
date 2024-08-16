@@ -13,25 +13,26 @@ The bot supports multiple languages and can handle attachments such as images.
 
 ## Commands
 
-- `/help` - Provides information on how to use the bot and its commands.
+- `/start` - Provides information on how to use the bot and its commands.
 - `/lang` - Changes the language of the bot. Use `English` or `Español`.
+- `/menu` - 
 
 ## How to Use
 
 1. **Starting the Bot**: Send `/start` to initiate the bot and receive the welcome message.
    
 2. **Creating a Ticket**:
-   - Choose "Create a new Jira ticket" from the `/help` menu.
+   - Choose "Create a new Jira ticket" from the `/menu`.
    - Send the title of the issue when prompted.
    - Describe the problem in detail.
    - Optionally, attach an image related to the issue or type 'No' to skip this step.
    
 3. **Editing a Ticket**:
-   - Choose "Add an attachment to a ticket" from the `/help` menu.
+   - Choose "Add an attachment to a ticket" from the `/menu`.
    - Provide the ticket key and the file you want to attach.
 
 4. **Checking Ticket Status**:
-   - Choose "Check the status of a ticket" from the `/help` menu.
+   - Choose "Check the status of a ticket" from the `/menu`.
    - Provide the ticket key to get its current status.
 
 5. **Changing Language**:

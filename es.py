@@ -1,9 +1,10 @@
 ES = {
-  "WELCOME_MESSAGE": "¡Bienvenido al PCOM Bot! 🎉\nUsa el comando /help para reportar problemas. También puedes cambiar el idioma con /lang.",
+  "WELCOME_MESSAGE": "¡Bienvenido al PCOM Bot! 🎉\nUsa el comando /menu para reportar problemas. También puedes cambiar el idioma con /lang.",
   "CREATE_TICKET": "📝 Crear un nuevo ticket en Jira.",
   "EDIT_TICKET": "📎 Agregar un archivo adjunto a un ticket.",
   "STATUS_TICKET": "🔍 Consultar el estado de un ticket.",
   "CHOOSE_OPTION": "Por favor, selecciona una opción del menú.",
+  "ADD_COMMENT": "💬 Añadir comentario a un ticket.",
   "TICKET_SUMMARY": "Envía el título del problema.",
   "TICKET_KEY": "Envía el identificador (key) del ticket.",
   "TICKET_DESC": "Describe el problema con más detalles.",
@@ -16,5 +17,6 @@ ES = {
   "CREATING_TICKET": "\n⏳ Creando el ticket...",
   "EDITING_TICKET": "\n⏳ Actualizando el ticket...",
   "CANCEL_EDIT": "\n❌ Edición del ticket cancelada.",
-  "LANG_CHANGED": "✅ Idioma cambiado correctamente."
+  "LANG_CHANGED": "✅ Idioma cambiado correctamente.",
+  "TICKET_COMMENT": "Enviar comentario",
 }

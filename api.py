@@ -41,6 +41,36 @@ def get_issue(key):
     return issue
 
 
+def add_comment(key, message):
+    payload = json.dumps({
+        "body": {
+            "content": [
+                {
+                    "content": [
+                        {
+                            "text": message.text,
+                            "type": "text"
+                        }
+                    ],
+                    "type": "paragraph"
+                }
+            ],
+            "type": "doc",
+            "version": 1
+        },
+    })
+    url = f"{JIRA_API_URL}/issue/{key}/comment"
+    response = requests.request(
+        "POST",
+        url,
+        data=payload,
+        headers=headers,
+        auth=auth
+    )
+    issue = json.loads(response.text)
+    print(json.dumps(issue, sort_keys=True, indent=4, separators=(",", ": ")))
+
+
 def create_issue(title, description):
     payload = json.dumps({
         "fields": {

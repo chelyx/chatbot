@@ -10,6 +10,7 @@ bot = telebot.TeleBot(TELEGRAM_TOKEN)
 LANG_EN = "English"
 LANG_ES = "Español"
 SELECTED_LANG = ES
+OPTION_SELECTED = None
 
 
 @bot.message_handler(commands=['start'])
@@ -37,28 +38,31 @@ def handle_change_language(message):
     bot.send_message(message.chat.id, SELECTED_LANG['LANG_CHANGED'], reply_markup=ReplyKeyboardRemove())
 
 
-@bot.message_handler(commands=['help'])
+@bot.message_handler(commands=['menu'])
 def send_help(message):
     board = ReplyKeyboardMarkup(row_width=2, resize_keyboard=True, one_time_keyboard=True)
     board.add(
         KeyboardButton(SELECTED_LANG['CREATE_TICKET']),
         KeyboardButton(SELECTED_LANG['EDIT_TICKET']),
-        KeyboardButton(SELECTED_LANG['STATUS_TICKET'])
+        KeyboardButton(SELECTED_LANG['STATUS_TICKET']),
+        KeyboardButton(SELECTED_LANG['ADD_COMMENT']),
     )
     bot.send_message(message.chat.id, SELECTED_LANG['CHOOSE_OPTION'], reply_markup=board)
     bot.register_next_step_handler(message, handle_board_answer)
 
 
 def handle_board_answer(message):
+    global OPTION_SELECTED
+    OPTION_SELECTED = message.text.lower()
     if message.text.lower() == SELECTED_LANG['CREATE_TICKET'].lower():
         bot.send_message(message.chat.id, SELECTED_LANG['TICKET_SUMMARY'], reply_markup=ReplyKeyboardRemove())
         bot.register_next_step_handler(message, handle_create_issue_get_title)
     elif message.text.lower() == SELECTED_LANG['EDIT_TICKET'].lower():
         bot.send_message(message.chat.id, SELECTED_LANG['TICKET_KEY'], reply_markup=ReplyKeyboardRemove())
         bot.register_next_step_handler(message, handle_get_issue_edit)
-    elif message.text.lower() == SELECTED_LANG['STATUS_TICKET'].lower():
+    elif message.text.lower() == SELECTED_LANG['STATUS_TICKET'].lower() or message.text.lower() == SELECTED_LANG['ADD_COMMENT'].lower():
         bot.send_message(message.chat.id, SELECTED_LANG['TICKET_KEY'], reply_markup=ReplyKeyboardRemove())
-        bot.register_next_step_handler(message, handle_get_issue_status)
+        bot.register_next_step_handler(message, handle_get_issue)
 
 
 def validate_issue_exists(chat_id, issue):
@@ -69,13 +73,25 @@ def validate_issue_exists(chat_id, issue):
     return True
 
 
-def handle_get_issue_status(message):
+def handle_get_issue(message):
     chat_id = message.chat.id
     key = message.text
     user_data[chat_id] = {'issue_key': key}
     issue = get_issue(key)
     if validate_issue_exists(chat_id, issue):
-        bot.send_message(chat_id, issue['fields']['status']['description'])
+        if OPTION_SELECTED == SELECTED_LANG['STATUS_TICKET'].lower():
+            bot.send_message(chat_id, issue['fields']['status']['description'])
+        if OPTION_SELECTED == SELECTED_LANG['ADD_COMMENT'].lower():
+            bot.send_message(chat_id, SELECTED_LANG['TICKET_COMMENT'])
+            bot.register_next_step_handler(message, handle_add_comment)
+
+
+def handle_add_comment(message):
+    chat_id = message.chat.id
+    bot.send_message(message.chat.id, SELECTED_LANG['EDITING_TICKET'])
+    add_comment(user_data[chat_id]['issue_key'], message)
+    bot.send_message(chat_id, SELECTED_LANG['TICKET_EDITED'] + JIRA_BOARD + user_data[chat_id]['issue_key'])
+    del user_data[chat_id]
 
 
 def handle_create_issue_get_title(message):
